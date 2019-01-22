@@ -37,18 +37,18 @@ class MailVille
     return municipalities 
   end
 
-  # mtéhode pour sauvegarder la liste sur un fichier JSON
+  # méthode pour sauvegarder la liste sur un fichier JSON
   def save_as_JSON(municipalities)
     File.open("/home/paul/Documents/save_as_project/db/email.json","w") do |f|
       f.write(municipalities.to_json)
     end
   end
 
-  # mtéhode pour sauvegarder la liste sur un sheet Google
+  # méthode pour sauvegarder la liste sur un sheet Google
   def save_as_spreadsheet(municipalities)
     session = GoogleDrive::Session.from_config("config.json")
     ws = session.spreadsheet_by_key("10URCixdlldzOgVwdmbYIIpQWyd_kREt0vetjSTyK1x4").worksheets[0]
-    
+    # attribuer chaque valeur d'un hash à une colonne 
     i = 1
     municipalities.each do |municipality|
     municipality.each_pair do |ville, mail|
@@ -60,7 +60,7 @@ class MailVille
     ws.save
   end
 
-  # mtéhode pour sauvegarder la liste sur un fichier csv
+  # méthode pour sauvegarder la liste sur un fichier csv
   def save_as_csv(municipalities)
     CSV.open("/home/paul/Documents/save_as_project/db/email.csv", "wb")  do |csv| 
     municipalities.each do |municipality|
