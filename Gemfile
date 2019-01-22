@@ -1,4 +1,8 @@
-gem 'ruby 2.5.1p57'
-gem 'pry'
+source 'https://rubygems.org'
+
 gem 'rspec'
-gem 'rubycop'
+gem 'pry'
+gem 'rubocop', '~> 0.57.2'
+gem 'nokogiri'
+gem 'json'
+gem 'google_drive'
